@@ -135,3 +135,9 @@ npm i express pug
       console.log(parsed.payload.toString("utf8"))
   }
 ```
+---
+#### 2.0 SoketIO vs WebSockets
+- SocketIO 는 Websocket의 부가기능이 아니다.
+- SocketIO는 프론트와 백엔드 간 실시간 통신을 가능하게 해주는 프레임워크 또는 라이브러리다.
+- 프론트와 백엔드 간 실시간 통신을 하기 위해서 꼭 socketIO를 사용할 필요는 없다.
+- SocketIO는 연결이 어떤 이유에서든지 끊어지면, 재연결을 시도한다.
