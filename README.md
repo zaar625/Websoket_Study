@@ -89,3 +89,49 @@ npm i express pug
 #### 1.3 Websoket Events
 
 - 아무것도 설치할 필요없이 브라우저에서 지원됨.
+
+#### 1.4 Websocket Meassage
+
+#### 1.6 Chat Complated
+
+- 서로 다은 브라우저는 서로 메시지를 주고받지 못한다. -> 해결하는 과정을 보여준다.
+
+#### 1.7 NickNames part One
+
+- 우리가 메세지를 보낼 때, 백엔드에서는 누가 메세지를 보냈는지 구분하지 못한다. -> 메세지를 구별해주는 방법이 필요하다.
+- 아래와 같이 구분을 할 예정이다.
+
+```
+  {
+  type:"message",
+  payload:"hello eveyone!"
+  }
+
+  {
+  type:"nickName",
+  payload:"Nico"
+  }
+```
+
+#### 1.8 Nicknames part Two
+
+```
+  if (parsed.type === "new_message") {
+      sockets.forEach((aSocket) =>
+        aSocket.send(parsed.payload.toString("utf8"))
+      );
+    } else if (parsed.type === "nickname") {
+      console.log(parsed.payload);
+    }
+```
+
+위 코드를 아래 처럼 변경할 수 있다.
+
+```
+  switch (parsed.type) {
+    case "new_message" :
+      sockets.forEach(()=>aSocket.send(parsed.payload.toString("utf8")))
+    case "nickname":
+      console.log(parsed.payload.toString("utf8"))
+  }
+```
