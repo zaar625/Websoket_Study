@@ -16,9 +16,6 @@ socket.addEventListener("message", async (message) => {
   //   console.log("서버로부터 새로운 메세지:", message);
   const data = await message.data;
   //   console.log(message, data);
-  const li = document.createElement("li");
-  li.innerText = data;
-  messageList.append(li);
 });
 
 socket.addEventListener("close", () => {
@@ -29,6 +26,9 @@ function handleSumit(event) {
   event.preventDefault();
   const input = messageForm.querySelector("input");
   socket.send(makeMessage("new_message", input.value));
+  const li = document.createElement("li");
+  li.innerText = `YOU: ${input.value}`;
+  messageList.append(li);
   input.value = "";
 }
 
