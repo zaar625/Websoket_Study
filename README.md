@@ -85,3 +85,7 @@ npm i express pug
 
 - node.js로 웹소켓을 만드는 과정. -> ws라는 아주 멋진 package의 도움을 받을 것임.
 - implementation : 어떤 규칙을 따르는 코드.
+
+#### 1.3 Websoket Events
+
+- 아무것도 설치할 필요없이 브라우저에서 지원됨.
