@@ -141,3 +141,7 @@ npm i express pug
 - SocketIO는 프론트와 백엔드 간 실시간 통신을 가능하게 해주는 프레임워크 또는 라이브러리다.
 - 프론트와 백엔드 간 실시간 통신을 하기 위해서 꼭 socketIO를 사용할 필요는 없다.
 - SocketIO는 연결이 어떤 이유에서든지 끊어지면, 재연결을 시도한다.
+
+#### 2.1 Installing SocketIO
+- #1의 내용과 SocketIO를 사용한 코드를 꼭 비교해보자
+- io() 함수는 알아서 socket.io를 실행하고 있는 서버를 찾을 것이다.
