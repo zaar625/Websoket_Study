@@ -135,13 +135,26 @@ npm i express pug
       console.log(parsed.payload.toString("utf8"))
   }
 ```
+
 ---
+
 #### 2.0 SoketIO vs WebSockets
+
 - SocketIO 는 Websocket의 부가기능이 아니다.
 - SocketIO는 프론트와 백엔드 간 실시간 통신을 가능하게 해주는 프레임워크 또는 라이브러리다.
 - 프론트와 백엔드 간 실시간 통신을 하기 위해서 꼭 socketIO를 사용할 필요는 없다.
 - SocketIO는 연결이 어떤 이유에서든지 끊어지면, 재연결을 시도한다.
 
 #### 2.1 Installing SocketIO
+
 - #1의 내용과 SocketIO를 사용한 코드를 꼭 비교해보자
 - io() 함수는 알아서 socket.io를 실행하고 있는 서버를 찾을 것이다.
+
+#### 2.3 SocketIO is Amazing
+
+- 특정한 event를 emit해 줄 수 있다. 어떤 이름이든 상관없이.
+- 자바스트립트 오브젝트를 보낼수 있다. 서버에 객체를 스트링으로 변환할 필요가 없다.
+- socket.on 뒤에 우리가 원하는 event를 넣어주면 된다.
+- socket.emit 에는 콜백이 있는데 서버로부터 실행되는 function이다.? 서버에서 호출하는 function?
+  - 프론트에서 세번째 인자로 콜백함수를 함께 보낼 수 있다. 이 함수는 서버에서 받아 서버에서 실행 시킬 수 있다.
+- 프론트의 socket.emit 과 서버의 socket.on 의 이벤트 이름은 같아야 한다.

@@ -16,7 +16,12 @@ const httpServer = createServer(app); // http 서버를 만들고
 const wsServer = new Server(httpServer);
 
 wsServer.on("connection", (socket) => {
-  console.log(socket);
+  socket.on("enter_room", (msg, callbackFn) => {
+    console.log(msg);
+    setTimeout(() => {
+      callbackFn();
+    }, 5000);
+  });
 });
 
 httpServer.listen(3000); // http 서버 위에 webSocket 서버를 만들 수 있도록 한 것임.
