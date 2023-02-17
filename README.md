@@ -189,3 +189,15 @@ socket.on("new_message", addMessage);
 socket.on("new_message", (msg)=>{addMessage(msg)});
 //둘다 같다.
 ```
+
+---
+
+### 중간 정리
+
+- socket.on(eventName, listener)
+- socket.onAny(listener): 이벤트가 발생할 때 실핼될 리스너를 추가합니다.
+- disconnecting : 이 이벤트는 연결해제와 유사하지만 socket#rooms세트가 아직 비어 있지 않은 경우 조금 더 일찍 시작된다.
+- socket.emit : 문자열 이름으로 식별되는 소켓에 이벤트를 내보냅니다. 다른 모든 매개변수를 포함할 수 있으며, 버퍼를 포함하여 모든 직렬화 가능한 데이터 구조가 지원된다.
+- socket.join(room): 주어진 방이나 방 목록에 소켓을 추가합니다.
+- 소켓이란? 또다른 파이프의 끝이나 파이프 이음쇠를 가리킨다. 은행 창구 같은거 같은데?
+- socket.to(room): 이벤트가 지정된 룸에 참여한 클라이언트에게만 브로드 캐스트 되도록 후속 이벤트 방출에 대한 수정자를 설정합니다?
