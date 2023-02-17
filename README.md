@@ -208,3 +208,9 @@ socket.on("new_message", (msg)=>{addMessage(msg)});
 
 - Adapter의 개념 중요
   - adapter가 기본적으로 하는 일은 다른 서버들 사이에 실시간 어플리케이션을 동기화 하는 것임.
+
+```
+socket.on("room_change", console.log);
+socket.on("room_change", (msg) => console.log(msg));
+//두 개의 코드는 같다.
+```
