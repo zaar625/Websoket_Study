@@ -1,5 +1,4 @@
 import express from "express";
-import WebSocket from "ws";
 import { Server } from "socket.io";
 import { createServer } from "http";
 
@@ -19,10 +18,20 @@ wsServer.on("connection", (socket) => {
   socket.onAny((event) => {
     console.log(`Socket Event:${event}`);
   });
+
   socket.on("enter_room", (roomName, callbackFn) => {
     socket.join(roomName);
     callbackFn();
     socket.to(roomName).emit("welcome");
+  });
+
+  socket.on("disconnecting", () => {
+    socket.rooms.forEach((room) => socket.to(room).emit("bye"));
+  });
+
+  socket.on("new_message", (msg, room, done) => {
+    socket.to(room).emit("new_message", msg);
+    done();
   });
 });
 

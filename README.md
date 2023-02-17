@@ -174,3 +174,18 @@ npm i express pug
 #### 2.4 Rooms
 
 - socketIO는 기본적으로 룸을 제공한다.
+
+#### 2.5 Room Message
+
+-
+
+#### 2.6 Room Notifications
+
+- io.on(disconnect, ...) 와 io.on(disconnecting, ...)은 고객이 접속을 중단할 것이지만 아직 방을 완전히 나가지는 않는다.
+  - 예를 들어 창을 닫거나 컴퓨터가 꺼졌을 때
+
+```
+socket.on("new_message", addMessage);
+socket.on("new_message", (msg)=>{addMessage(msg)});
+//둘다 같다.
+```
