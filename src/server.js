@@ -14,9 +14,27 @@ const httpServer = createServer(app); // http 서버를 만들고
 // const wss = new WebSocket.Server({ server }); //http 서버 위에 소켓을 올리는 과정이다.
 const wsServer = new Server(httpServer);
 
+function publicRooms() {
+  const {
+    sockets: {
+      adapter: { sids, rooms },
+    },
+  } = wsServer;
+  const publicRooms = [];
+  rooms.forEach((_, key) => {
+    if (sids.get(key) === undefined) {
+      publicRooms.push(key);
+    }
+  });
+  return publicRooms;
+  //   const sids = wsServer.sockets.adapter.sids;
+  //   const rooms = wsServer.sockets.adapter.rooms;
+}
+
 wsServer.on("connection", (socket) => {
   socket["nickname"] = "Anon";
   socket.onAny((event) => {
+    console.log(wsServer.sockets.adapter);
     console.log(`Socket Event:${event}`);
   });
 
