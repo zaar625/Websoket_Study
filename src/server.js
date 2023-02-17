@@ -16,11 +16,12 @@ const httpServer = createServer(app); // http 서버를 만들고
 const wsServer = new Server(httpServer);
 
 wsServer.on("connection", (socket) => {
+  socket.onAny((event) => {
+    console.log(`Socket Event:${event}`);
+  });
   socket.on("enter_room", (roomName, callbackFn) => {
-    console.log(roomName);
-    setTimeout(() => {
-      callbackFn("hello from the backend");
-    }, 5000);
+    socket.join(roomName);
+    callbackFn();
   });
 });
 
